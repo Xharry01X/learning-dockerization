@@ -1,6 +1,7 @@
 FROM ubuntu
 
-RUN apt-get update
+# this all are layers thats why it runs every layer
+RUN apt-get update 
 RUN apt-get install -y curl
 RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
     RUN apt-get upgrade -y
