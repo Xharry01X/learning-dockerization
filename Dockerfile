@@ -1,14 +1,16 @@
-FROM node:18
+FROM ubuntu
 
-WORKDIR /usr/src/app
+RUN apt-get update
+RUN apt-get install -y curl
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
+    RUN apt-get upgrade -y
+    RUN apt-get install -y nodejs
 
-COPY package*.json ./
+    COPY package.json package.json
+    COPY package-lock.json package-lock.json
+    COPY app.js app.js
 
-RUN npm install
-
-COPY .  .
-
-EXPOSE 8000
+    RUN npm install
 
 CMD [ "node","app.js" ]
 
